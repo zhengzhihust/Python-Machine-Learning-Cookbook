@@ -1,10 +1,11 @@
-import numpy as np
-from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor
-from sklearn.tree import DecisionTreeRegressor
-from sklearn import datasets
-from sklearn.metrics import mean_squared_error, explained_variance_score
-from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import datasets
+from sklearn.ensemble import AdaBoostRegressor
+from sklearn.metrics import mean_squared_error, explained_variance_score
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.utils import shuffle
+
 
 def plot_feature_importances(feature_importances, title, feature_names):
     # Normalize the importance values 
@@ -48,17 +49,17 @@ if __name__=='__main__':
     y_pred_dt = dt_regressor.predict(X_test)
     mse = mean_squared_error(y_test, y_pred_dt)
     evs = explained_variance_score(y_test, y_pred_dt) 
-    print "\n#### Decision Tree performance ####"
-    print "Mean squared error =", round(mse, 2)
-    print "Explained variance score =", round(evs, 2)
+    print ("\n#### Decision Tree performance ####")
+    print ("Mean squared error =", round(mse, 2))
+    print ("Explained variance score =", round(evs, 2))
 
     # Evaluate performance of AdaBoost
     y_pred_ab = ab_regressor.predict(X_test)
     mse = mean_squared_error(y_test, y_pred_ab)
     evs = explained_variance_score(y_test, y_pred_ab) 
-    print "\n#### AdaBoost performance ####"
-    print "Mean squared error =", round(mse, 2)
-    print "Explained variance score =", round(evs, 2)
+    print ("\n#### AdaBoost performance ####")
+    print ("Mean squared error =", round(mse, 2))
+    print ("Explained variance score =", round(evs, 2))
 
     # Plot relative feature importances 
     plot_feature_importances(dt_regressor.feature_importances_, 
