@@ -2,7 +2,7 @@ import sys
 
 import numpy as np
 
-filename = "data_singlevar.txt"
+filename = "data_multivar.txt"
 X = []
 y = []
 with open(filename, 'r') as f:
@@ -60,7 +60,7 @@ print ("R2 score =", round(sm.r2_score(y_test, y_test_pred_ridge), 2))
 # Polynomial regression
 from sklearn.preprocessing import PolynomialFeatures
 
-polynomial = PolynomialFeatures(degree=10)
+polynomial = PolynomialFeatures(degree=100)
 X_train_transformed = polynomial.fit_transform(X_train)
 datapoint = [0.39,2.78,7.11]
 poly_datapoint = polynomial.fit_transform(datapoint)
@@ -74,3 +74,6 @@ print ("\nPolynomial regression:\n", poly_linear_model.predict(poly_datapoint))
 sgd_regressor = linear_model.SGDRegressor(loss='huber', n_iter=50)
 sgd_regressor.fit(X_train, y_train)
 print ("\nSGD regressor:\n", sgd_regressor.predict(datapoint))
+
+
+
