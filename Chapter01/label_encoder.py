@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn import preprocessing
 
 label_encoder = preprocessing.LabelEncoder()

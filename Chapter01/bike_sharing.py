@@ -2,11 +2,11 @@ import csv
 import sys
 
 import numpy as np
+from pyspark.python.pyspark.shell import sc
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, explained_variance_score
 from sklearn.utils import shuffle
-
 from .housing import plot_feature_importances
 
 
@@ -17,6 +17,7 @@ def load_dataset(filename):
         X.append(row[2:13])
         y.append(row[-1])
 
+    data_from_file = sc.textFile('/Users/zhengzhi/Downloads/VS14MORT.txt.gz', 4)
     # Extract feature names
     feature_names = np.array(X[0])
 
